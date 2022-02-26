@@ -1,4 +1,5 @@
 # libraries used : text to speech,datetime,speechRecognition,wikipedia,webbrowser,os,random,smtplib,sys,pywhatkit,getpass,cv2
+import time
 import pyttsx3
 import datetime
 import speech_recognition as sr
@@ -213,7 +214,7 @@ while True:
             # showing result, it take frame name and image
             # output
             cv2.imshow("Photo", image)
-
+            time.sleep(0.1)  # If you don't wait, the image will be dark
             # If keyboard interrupt occurs, destroy image window
             cv2.waitKey(0)
             cv2.destroyWindow("Photo")
