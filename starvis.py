@@ -1,4 +1,4 @@
-# libraries used : text to speech,datetime,speechRecognition,wikipedia,webbrowser,os,random,smtplib,sys,pywhatkit,getpass
+# libraries used : text to speech,datetime,speechRecognition,wikipedia,webbrowser,os,random,smtplib,sys,pywhatkit,getpass,cv2
 import pyttsx3
 import datetime
 import speech_recognition as sr
@@ -10,6 +10,7 @@ import smtplib
 import sys
 import pywhatkit
 import getpass
+import cv2
 
 # setting up engines and voices
 engine = pyttsx3.init('sapi5')
@@ -93,7 +94,7 @@ def send_email(to, content):
     server.quit()
 
 
-wishMe()
+# wishMe()
 while True:
     query = take_command()
 
@@ -176,6 +177,7 @@ while True:
             speak("Successfully Sent!")
         except Exception as e:
             speak("Sorry , Failed to send message!")
+
     elif "search google" in query:
         try:
             speak("What should I search ?")
@@ -183,6 +185,7 @@ while True:
             pywhatkit.search(content)
         except Exception as e:
             speak("Sorry , Failed to search!")
+
     elif "search topic" in query:
         try:
             speak("What should I search ?")
@@ -191,12 +194,35 @@ while True:
             pywhatkit.info(content, lines=2)
         except Exception as e:
             speak("Sorry , Failed to search!")
+
     elif "open team" in query:
         path = "C:\\Users\\91951\\AppData\\Local\\Microsoft\\Teams\\current\\Teams.exe"
         try:
             os.startfile(path)
         except Exception as e:
             print(e)
+
+    elif "photo" in query:
+        cam_port = 0
+        cam = cv2.VideoCapture(cam_port)
+        # reading the input using the camera
+        result, image = cam.read()
+        # If image will detected without any error, show resu
+        if result:
+
+            # showing result, it take frame name and image
+            # output
+            cv2.imshow("Photo", image)
+
+            # If keyboard interrupt occurs, destroy image window
+            cv2.waitKey(0)
+            cv2.destroyWindow("Photo")
+
+            # saving image
+            img = input("Write file name to save image :")
+            cv2.imwrite(img+".png", image)
+        else:
+            print("No image detected. Please! try again")
 
     elif "bye" in query:
         speak("Ok sir, have a good day!")

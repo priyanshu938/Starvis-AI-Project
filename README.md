@@ -30,7 +30,9 @@ At present, this AI can perform following operations if it hears the following w
 
 12."open teams" : opens ms teams in your system
 
-13."bye" : say bye to close the Starvis AI
+13."photo" : takes photo from your camera and saves it in your local storage
+
+14."bye" : say bye to close the Starvis AI
 
 At last, do change the spoken commands as per your comfort and add some more commands to make your life easier.
 
