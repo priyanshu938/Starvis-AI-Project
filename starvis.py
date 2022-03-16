@@ -95,7 +95,7 @@ def send_email(to, content):
     server.quit()
 
 
-# wishMe()
+wishMe()
 while True:
     query = take_command()
 
