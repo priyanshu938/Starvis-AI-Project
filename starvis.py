@@ -95,13 +95,14 @@ def send_email(to, content):
     server.quit()
 
 
-wishMe()
+# wishMe()
 while True:
     query = take_command()
 
     if "wikipedia" in query:
+        speak("Say what to search...")
+        query = take_command()
         speak("Searching wikipedia...")
-        query = query.replace("wikipedia", "")
         results = wikipedia.summary(query, sentences=1)
         speak("According to wikipedia")
         print(results)
